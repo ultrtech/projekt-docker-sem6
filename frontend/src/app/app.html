@@ -1,0 +1,66 @@
+<div class="container">
+  <h1>{{ title() }}</h1>
+
+  <!-- Kolumny dni tygodnia -->
+  <div class="days-container">
+    <div *ngFor="let day of days" class="day-card">
+      <h2>{{ day }}</h2>
+
+      <!-- Lista zadań -->
+      <div class="todos-list">
+        <!-- Zadania -->
+        <div *ngFor="let todo of getTodosForDay(day)" class="todo-item">
+          <!-- Wyświetlanie -->
+          <div *ngIf="!isEditing(todo.id)" class="todo-view">
+            <span class="todo-text">{{ todo.text }}</span>
+            <div class="todo-actions">
+              <button (click)="startEdit(todo.id, todo.text)" class="btn btn-edit">✏️</button>
+              <button (click)="deleteTodo(todo.id)" class="btn btn-delete">✕</button>
+            </div>
+          </div>
+
+          <!-- Edycja -->
+          <div *ngIf="isEditing(todo.id)" class="todo-edit">
+            <input
+              [(ngModel)]="editingText"
+              (keyup.enter)="saveEdit()"
+              type="text"
+              class="input-small"
+            />
+            <div class="edit-actions">
+              <button (click)="saveEdit()" class="btn btn-save">✓</button>
+              <button (click)="cancelEdit()" class="btn btn-cancel">✕</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Brak zadań -->
+        <div *ngIf="getTodosForDay(day).length === 0" class="empty-message">
+          Brak zadań
+        </div>
+
+        <!-- Przycisk otwarcia formularza -->
+        <div *ngIf="!isFormOpen(day)" class="add-button-section">
+          <button (click)="openForm(day)" class="btn btn-add-open">+</button>
+        </div>
+
+        <!-- Formularz dodawania -->
+        <div *ngIf="isFormOpen(day)" class="add-todo-section">
+          <input
+            [ngModel]="getNewTodoText(day)"
+            (ngModelChange)="setNewTodoText(day, $event)"
+            (keyup.enter)="addTodo(day)"
+            type="text"
+            placeholder="Wpisz zadanie..."
+            class="input-add"
+            autofocus
+          />
+          <div class="form-buttons">
+            <button (click)="addTodo(day)" class="btn btn-add">✓</button>
+            <button (click)="closeForm(day)" class="btn btn-cancel-form">✕</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

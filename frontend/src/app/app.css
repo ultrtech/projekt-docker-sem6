@@ -1,0 +1,301 @@
+/* ============================================================================
+   GLOBALNE
+   ============================================================================ */
+* {
+  box-sizing: border-box;
+}
+
+/* ============================================================================
+   LAYOUT
+   ============================================================================ */
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+h2 {
+  color: #555;
+  font-size: 18px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.days-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+}
+
+.day-card {
+  background-color: #f8f9fa;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  padding: 15px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================================================
+   DODAWANIE ZADAŃ
+   ============================================================================ */
+.add-button-section {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.add-todo-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.input-add {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+/* ============================================================================
+   PRZYCISKI
+   ============================================================================ */
+.btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+/* Przycisk dodawania - główny */
+.btn-add {
+  background-color: #28a745;
+  color: white;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.btn-add:hover {
+  background-color: #218838;
+  transform: scale(1.1);
+}
+
+/* Przycisk otwarcia formularza */
+.btn-add-open {
+  background-color: #28a745;
+  color: white;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.btn-add-open:hover {
+  background-color: #218838;
+  transform: scale(1.1);
+}
+
+/* Minimalistyczne przyciski */
+.btn-edit {
+  background: none;
+  border: none;
+  color: #007bff;
+  padding: 5px 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-edit:hover {
+  color: #0056b3;
+  transform: scale(1.2);
+}
+
+.btn-delete {
+  background: none;
+  border: none;
+  color: #dc3545;
+  padding: 5px 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  color: #c82333;
+  transform: scale(1.2);
+}
+
+.btn-save {
+  background: none;
+  border: none;
+  color: #28a745;
+  padding: 5px 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-save:hover {
+  color: #218838;
+  transform: scale(1.2);
+}
+
+.btn-cancel {
+  background: none;
+  border: none;
+  color: #6c757d;
+  padding: 5px 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-cancel:hover {
+  color: #5a6268;
+  transform: scale(1.2);
+}
+
+.btn-cancel-form {
+  background: none;
+  border: none;
+  color: #6c757d;
+  padding: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-cancel-form:hover {
+  color: #5a6268;
+  transform: scale(1.2);
+}
+
+/* ============================================================================
+   LISTA ZADAŃ
+   ============================================================================ */
+.add-button-section {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.todos-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+}
+
+.todo-item {
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.todo-view {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.todo-text {
+  flex: 1;
+  word-break: break-word;
+  color: #333;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.todo-actions {
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+/* ============================================================================
+   EDYCJA
+   ============================================================================ */
+.todo-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-small {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 5px;
+}
+
+/* ============================================================================
+   PUSTA LISTA
+   ============================================================================ */
+.empty-message {
+  text-align: center;
+  color: #999;
+  font-style: italic;
+  padding: 20px 10px;
+  font-size: 13px;
+}
+
+/* ============================================================================
+   RESPONSYWNOŚĆ
+   ============================================================================ */
+@media (max-width: 1200px) {
+  .days-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .days-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .days-container {
+    grid-template-columns: 1fr;
+  }
+}
