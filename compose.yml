@@ -21,6 +21,12 @@ services:
       SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-todos}
       SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-todos}
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://localhost:8080/actuator/health/readiness || exit 1" ]
+      interval: 5s
+      timeout: 3s
+      retries: 15
+      start_period: 15s
     depends_on:
       postgres:
         condition: service_healthy
@@ -29,7 +35,8 @@ services:
     build:
       context: ./frontend
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
 
   caddy:
     image: caddy:2.10-alpine
@@ -38,8 +45,10 @@ services:
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
     depends_on:
-      - frontend
-      - backend
+      frontend:
+        condition: service_healthy
+      backend:
+        condition: service_healthy
 
 volumes:
   postgres-data:
