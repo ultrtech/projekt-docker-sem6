@@ -1,4 +1,4 @@
-# Harmonogram
+# Harmonogram 
 
 Prosty projekt zaliczeniowy: aplikacja do zarządzania zadaniami w podziale na dni tygodnia.
 
